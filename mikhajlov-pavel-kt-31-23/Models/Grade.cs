@@ -1,4 +1,6 @@
-﻿namespace mikhajlov_pavel_kt_31_23.Models
+using System.Text.Json.Serialization;
+
+namespace mikhajlov_pavel_kt_31_23.Models
 {
     public class Grade
     {
@@ -8,7 +10,10 @@
         public int DisciplineId { get; set; } // Внешний ключ
 
         // Навигационные свойства
-        public Student Student { get; set; }
-        public Discipline Discipline { get; set; }
+        [JsonIgnore]
+        public Student? Student { get; set; }
+
+        [JsonIgnore]
+        public Discipline? Discipline { get; set; }
     }
 }

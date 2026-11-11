@@ -1,6 +1,147 @@
 @mikhajlov_pavel_kt_31_23_HostAddress = http://localhost:5033
 
-GET {{mikhajlov_pavel_kt_31_23_HostAddress}}/weatherforecast/
+### Students - Get All / Filtered via GET
+GET {{mikhajlov_pavel_kt_31_23_HostAddress}}/students
 Accept: application/json
+
+###
+
+### Students - Get Disciplines with Grades by FirstName
+GET {{mikhajlov_pavel_kt_31_23_HostAddress}}/students/disciplines?firstName=Павел
+Accept: application/json
+
+###
+
+### Students - Filter by Group and Name
+GET {{mikhajlov_pavel_kt_31_23_HostAddress}}/students?groupId=1&firstName=Иван&isDeleted=false
+Accept: application/json
+
+###
+
+### Students - Add Student (POST)
+POST {{mikhajlov_pavel_kt_31_23_HostAddress}}/students
+Content-Type: application/json
+
+{
+  "firstName": "Иван",
+  "lastName": "Иванов",
+  "groupId": 1
+}
+
+###
+
+### Groups - Get All / Filtered via GET (Returns comma-separated names)
+GET {{mikhajlov_pavel_kt_31_23_HostAddress}}/groups
+Accept: application/json
+
+###
+
+### Groups - Get Average Grades by Group Name
+GET {{mikhajlov_pavel_kt_31_23_HostAddress}}/groups/average-grades?groupName=КТ-31-23
+Accept: application/json
+
+###
+
+### Groups - Filter by Specialty and Course
+GET {{mikhajlov_pavel_kt_31_23_HostAddress}}/groups?course=3&isDeleted=false
+Accept: application/json
+
+###
+
+### Groups - Add Group (POST)
+POST {{mikhajlov_pavel_kt_31_23_HostAddress}}/groups
+Content-Type: application/json
+
+{
+  "name": "КТ-31-23",
+  "course": 3,
+  "specialtyId": 1
+}
+
+###
+
+### Disciplines - Get All / Filtered via GET (Returns comma-separated names)
+GET {{mikhajlov_pavel_kt_31_23_HostAddress}}/disciplines
+Accept: application/json
+
+###
+
+### Disciplines - Add Discipline (POST)
+POST {{mikhajlov_pavel_kt_31_23_HostAddress}}/disciplines
+Content-Type: application/json
+
+{
+  "name": "Программирование"
+}
+
+###
+
+### Specialties - Get All / Filtered via GET
+GET {{mikhajlov_pavel_kt_31_23_HostAddress}}/specialties
+Accept: application/json
+
+###
+
+### Specialties - Filter by Code or Title
+GET {{mikhajlov_pavel_kt_31_23_HostAddress}}/specialties?code=09.03.01
+Accept: application/json
+
+###
+
+### Specialties - Add Specialty (POST)
+POST {{mikhajlov_pavel_kt_31_23_HostAddress}}/specialties
+Content-Type: application/json
+
+{
+  "title": "Информатика и вычислительная техника",
+  "code": "09.03.01"
+}
+
+###
+
+### Specialties - Update Specialty (PUT)
+PUT {{mikhajlov_pavel_kt_31_23_HostAddress}}/specialties/1
+Content-Type: application/json
+
+{
+  "title": "Информатика и вычислительная техника (Обновлено)",
+  "code": "09.03.01"
+}
+
+###
+
+### Grades - Get All / Filtered via GET
+GET {{mikhajlov_pavel_kt_31_23_HostAddress}}/grades
+Accept: application/json
+
+###
+
+### Grades - Filter by Student and Discipline
+GET {{mikhajlov_pavel_kt_31_23_HostAddress}}/grades?studentId=1&disciplineId=1
+Accept: application/json
+
+###
+
+### Grades - Add Grade (POST)
+POST {{mikhajlov_pavel_kt_31_23_HostAddress}}/grades
+Content-Type: application/json
+
+{
+  "value": 5,
+  "studentId": 1,
+  "disciplineId": 1
+}
+
+###
+
+### Grades - Update Grade (PUT)
+PUT {{mikhajlov_pavel_kt_31_23_HostAddress}}/grades/1
+Content-Type: application/json
+
+{
+  "value": 4,
+  "studentId": 1,
+  "disciplineId": 1
+}
 
 ###

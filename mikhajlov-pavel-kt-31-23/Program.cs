@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using mikhajlov_pavel_kt_31_23.Database;
+using mikhajlov_pavel_kt_31_23.Services;
 using NLog;
 using NLog.Web;
 
@@ -13,13 +14,20 @@ try
     builder.Host.UseNLog();
     // Add services to the container.
 
-    builder.Services.AddControllers();
+    builder.Services.AddControllers()
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+        });
+
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
     builder.Services.AddDbContext<StudentDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+    builder.Services.AddServices();
 
     var app = builder.Build();
 
